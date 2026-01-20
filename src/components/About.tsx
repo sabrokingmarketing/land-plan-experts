@@ -41,7 +41,7 @@ export const About = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-foreground mt-4 leading-[1.1]">
             Planning Excellence
             <br />
-            <span className="text-gradient-gold">Since 2018</span>
+            <span className="text-gradient-brand">Since 2018</span>
           </h2>
         </motion.div>
 

@@ -53,7 +53,7 @@ export const Team = () => {
             Our Team
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-foreground mt-4 leading-[1.1]">
-            Meet the <span className="text-gradient-gold">Experts</span>
+            Meet the <span className="text-gradient-brand">Experts</span>
           </h2>
         </motion.div>
 
@@ -69,7 +69,7 @@ export const Team = () => {
             >
               <div className="bg-background rounded-2xl p-5 lg:p-6 border border-border/50 hover:border-accent/30 hover:shadow-lg transition-all duration-300 text-center">
                 {/* Avatar */}
-                <div className="w-16 h-16 lg:w-20 lg:h-20 mx-auto rounded-2xl bg-gradient-gold flex items-center justify-center mb-4 shadow-gold/20 shadow-lg group-hover:scale-105 transition-transform">
+                <div className="w-16 h-16 lg:w-20 lg:h-20 mx-auto rounded-2xl bg-gradient-brand flex items-center justify-center mb-4 shadow-brand/20 shadow-lg group-hover:scale-105 transition-transform">
                   <span className="text-lg lg:text-xl font-bold text-primary">
                     {member.initials}
                   </span>

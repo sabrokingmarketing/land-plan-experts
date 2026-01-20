@@ -48,7 +48,7 @@ export const Header = () => {
           <div className="flex items-center justify-between h-18 lg:h-20">
             {/* Logo - Refined */}
             <a href="#home" className="flex items-center gap-3 group">
-              <div className="w-9 h-9 lg:w-10 lg:h-10 bg-gradient-gold rounded-lg flex items-center justify-center shadow-sm transition-transform group-hover:scale-105">
+              <div className="w-9 h-9 lg:w-10 lg:h-10 bg-gradient-brand rounded-lg flex items-center justify-center shadow-sm transition-transform group-hover:scale-105">
                 <span className="text-primary font-serif font-bold text-base lg:text-lg">B</span>
               </div>
               <div className="hidden sm:block">
@@ -73,7 +73,7 @@ export const Header = () => {
 
             {/* CTA - Desktop */}
             <div className="hidden lg:block">
-              <Button variant="gold" size="default" asChild>
+              <Button variant="brand" size="default" asChild>
                 <a href="#contact">Get Started</a>
               </Button>
             </div>
@@ -156,7 +156,7 @@ export const Header = () => {
                 transition={{ delay: 0.4 }}
                 className="mt-12"
               >
-                <Button variant="gold" size="xl" className="w-full justify-center" asChild>
+                <Button variant="brand" size="xl" className="w-full justify-center" asChild>
                   <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
                     Get Started
                   </a>

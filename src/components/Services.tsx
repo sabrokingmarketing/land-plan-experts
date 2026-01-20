@@ -101,7 +101,7 @@ export const Services = () => {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-foreground mt-4 leading-[1.1]">
               Expert Planning
               <br />
-              <span className="text-gradient-gold">Solutions</span>
+              <span className="text-gradient-brand">Solutions</span>
             </h2>
           </motion.div>
           
@@ -111,7 +111,7 @@ export const Services = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="hidden lg:block"
           >
-            <Button variant="gold" size="lg" asChild className="group">
+            <Button variant="brand" size="lg" asChild className="group">
               <a href="#contact" className="flex items-center gap-2">
                 Get a Quote
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -223,7 +223,7 @@ export const Services = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="mt-8"
           >
-            <Button variant="gold" size="lg" className="w-full justify-center" asChild>
+            <Button variant="brand" size="lg" className="w-full justify-center" asChild>
               <a href="#contact" className="flex items-center gap-2">
                 Get a Quote
                 <ArrowRight className="w-4 h-4" />

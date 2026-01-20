@@ -13,7 +13,7 @@ export const Footer = () => {
           {/* Brand */}
           <div className="col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 bg-gradient-gold rounded-lg flex items-center justify-center">
+              <div className="w-9 h-9 bg-gradient-brand rounded-lg flex items-center justify-center">
                 <span className="text-primary font-serif font-bold text-base">B</span>
               </div>
               <span className="font-serif text-lg font-semibold">BVT Planners</span>

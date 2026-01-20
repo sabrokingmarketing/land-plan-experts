@@ -46,7 +46,7 @@ export const Contact = () => {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-foreground mt-4 mb-6 leading-[1.1]">
               Let's Start
               <br />
-              <span className="text-gradient-gold">Your Project</span>
+              <span className="text-gradient-brand">Your Project</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-md">
               Ready to transform your property vision into reality? 
@@ -96,7 +96,7 @@ export const Contact = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: 0.5 }}
             >
-              <Button variant="gold" size="xl" className="w-full sm:w-auto justify-center" asChild>
+              <Button variant="brand" size="xl" className="w-full sm:w-auto justify-center" asChild>
                 <a href="https://wa.me/27745828820" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                   <MessageCircle className="w-5 h-5" />
                   WhatsApp Us Now
