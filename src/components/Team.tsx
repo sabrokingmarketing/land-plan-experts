@@ -2,36 +2,42 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
+import teamBertus from "@/assets/team-bertus.png";
+import teamNdumiso from "@/assets/team-ndumiso.png";
+import teamAldrich from "@/assets/team-aldrich.png";
+import teamAllen from "@/assets/team-allen.png";
+import teamElliouse from "@/assets/team-elliouse.png";
+
 const team = [
   {
     name: "Bertus Van Tonder",
     role: "Principal & Managing Director",
     title: "Professional Planner",
-    initials: "BV",
+    image: teamBertus,
   },
   {
     name: "Ndumiso Nkosi",
     role: "Senior Planner",
     title: "Professional Planner",
-    initials: "NN",
+    image: teamNdumiso,
   },
   {
     name: "Aldrich van de Merwe",
     role: "Planning Associate",
     title: "Candidate Planner",
-    initials: "AM",
+    image: teamAldrich,
   },
   {
     name: "Allen van Vollenstee",
     role: "Planning Associate",
     title: "Candidate Planner",
-    initials: "AV",
+    image: teamAllen,
   },
   {
     name: "Elliouse Flynn",
     role: "Operations",
     title: "Administrative Assistant",
-    initials: "EF",
+    image: teamElliouse,
   },
 ];
 
@@ -70,11 +76,13 @@ export const Team = () => {
               className="group"
             >
               <div className="text-center p-6 bg-background rounded-3xl border border-border/50 hover:border-accent/30 hover:shadow-lg transition-all duration-300">
-                {/* Avatar */}
-                <div className="w-20 h-20 mx-auto mb-5 rounded-2xl bg-gradient-brand flex items-center justify-center shadow-brand group-hover:scale-105 group-hover:shadow-glow transition-all duration-300">
-                  <span className="text-2xl font-bold text-primary-foreground">
-                    {member.initials}
-                  </span>
+                {/* Photo */}
+                <div className="w-24 h-24 mx-auto mb-5 rounded-2xl overflow-hidden shadow-lg group-hover:scale-105 group-hover:shadow-xl transition-all duration-300">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
                 
                 {/* Info */}
