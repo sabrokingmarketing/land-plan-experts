@@ -77,7 +77,7 @@ export const Team = () => {
             >
               <div className="h-full flex flex-col items-center text-center p-6 bg-background rounded-3xl border border-border/50 hover:border-accent/30 hover:shadow-lg transition-all duration-300">
                 {/* Photo */}
-                <div className="w-20 h-20 lg:w-24 lg:h-24 flex-shrink-0 rounded-2xl overflow-hidden shadow-lg group-hover:scale-105 group-hover:shadow-xl transition-all duration-300">
+                <div className="w-28 h-28 lg:w-32 lg:h-32 flex-shrink-0 rounded-2xl overflow-hidden shadow-lg group-hover:scale-105 group-hover:shadow-xl transition-all duration-300">
                   <img
                     src={member.image}
                     alt={member.name}
