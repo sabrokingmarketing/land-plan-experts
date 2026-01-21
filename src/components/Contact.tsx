@@ -101,7 +101,7 @@ export const Contact = () => {
             </div>
 
             {/* CTA Button */}
-            <Button variant="brand" size="xl" className="btn-shimmer" asChild>
+            <Button variant="brand" size="xl" asChild>
               <a href="https://wa.me/27745828820" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
                 <MessageCircle className="w-5 h-5" />
                 WhatsApp Us Now
