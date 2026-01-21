@@ -6,43 +6,38 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-primary text-primary-foreground">
-      {/* Main Footer */}
-      <div className="container mx-auto px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+    <footer className="bg-primary py-16">
+      <div className="container mx-auto px-6 lg:px-8">
+        {/* Main Footer */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16 pb-12 border-b border-primary-foreground/10">
           {/* Brand */}
-          <div className="col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 bg-gradient-brand rounded-lg flex items-center justify-center">
-                <span className="text-primary font-serif font-bold text-base">B</span>
+          <div className="sm:col-span-2 lg:col-span-1">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-center font-bold text-primary-foreground text-lg shadow-brand">
+                B
               </div>
-              <span className="font-serif text-lg font-semibold">BVT Planners</span>
+              <span className="font-bold text-lg text-primary-foreground tracking-tight">
+                BVT Planners
+              </span>
             </div>
-            <p className="text-primary-foreground/60 text-sm leading-relaxed max-w-xs">
-              Expert land use planning services. SACPLAN registered professionals 
-              delivering results since 2018.
+            <p className="text-primary-foreground/60 text-sm leading-relaxed">
+              Expert land use planning and development consulting in Pretoria and surrounding areas.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-primary-foreground/80">
-              Navigate
+            <h4 className="font-bold text-primary-foreground mb-5 text-sm uppercase tracking-wider">
+              Navigation
             </h4>
-            <ul className="space-y-2.5">
-              {[
-                { label: "Home", href: "#home" },
-                { label: "About", href: "#about" },
-                { label: "Services", href: "#services" },
-                { label: "Team", href: "#team" },
-                { label: "Contact", href: "#contact" },
-              ].map((link) => (
-                <li key={link.label}>
+            <ul className="space-y-3">
+              {["Home", "About", "Services", "Team", "Contact"].map((link) => (
+                <li key={link}>
                   <a
-                    href={link.href}
-                    className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
+                    href={`#${link.toLowerCase()}`}
+                    className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors"
                   >
-                    {link.label}
+                    {link}
                   </a>
                 </li>
               ))}
@@ -51,15 +46,15 @@ export const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-primary-foreground/80">
+            <h4 className="font-bold text-primary-foreground mb-5 text-sm uppercase tracking-wider">
               Services
             </h4>
-            <ul className="space-y-2.5">
-              {["Rezoning", "Subdivisions", "Consent Uses", "Township Est.", "Feasibility"].map((service) => (
+            <ul className="space-y-3">
+              {["Rezoning", "Subdivisions", "Township", "SPLUMA"].map((service) => (
                 <li key={service}>
                   <a
                     href="#services"
-                    className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
+                    className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors"
                   >
                     {service}
                   </a>
@@ -70,47 +65,51 @@ export const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-primary-foreground/80">
+            <h4 className="font-bold text-primary-foreground mb-5 text-sm uppercase tracking-wider">
               Contact
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               <li>
-                <a href="tel:0745828820" className="text-sm text-primary-foreground/60 hover:text-accent transition-colors">
+                <a
+                  href="tel:+27745828820"
+                  className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors"
+                >
                   074 582 8820
                 </a>
               </li>
               <li>
-                <a href="tel:0123427911" className="text-sm text-primary-foreground/60 hover:text-accent transition-colors">
+                <a
+                  href="tel:+27123427911"
+                  className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors"
+                >
                   012 342 7911
                 </a>
               </li>
               <li>
-                <a href="mailto:info@bvtplanners.co.za" className="text-sm text-primary-foreground/60 hover:text-accent transition-colors">
-                  info@bvtplanners.co.za
+                <a
+                  href="https://wa.me/27745828820"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent hover:text-accent/80 text-sm font-medium transition-colors"
+                >
+                  WhatsApp
                 </a>
               </li>
             </ul>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-primary-foreground/10">
-        <div className="container mx-auto px-6 lg:px-8 py-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-primary-foreground/40">
-              © {new Date().getFullYear()} Bertus van Tonder Town Planners. All rights reserved.
-            </p>
-            <button
-              onClick={scrollToTop}
-              className="flex items-center gap-2 text-xs text-primary-foreground/40 hover:text-accent transition-colors group"
-            >
-              Back to top
-              <span className="w-6 h-6 rounded-full border border-primary-foreground/20 flex items-center justify-center group-hover:border-accent transition-colors">
-                <ArrowUp className="w-3 h-3" />
-              </span>
-            </button>
-          </div>
+        {/* Bottom Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8">
+          <p className="text-primary-foreground/40 text-xs text-center sm:text-left">
+            © {new Date().getFullYear()} Bertus van Tonder Town Planners. All rights reserved.
+          </p>
+          <button
+            onClick={scrollToTop}
+            className="w-10 h-10 rounded-full bg-gradient-brand flex items-center justify-center shadow-brand hover:scale-105 hover:shadow-glow transition-all"
+          >
+            <ArrowUp className="w-4 h-4 text-primary-foreground" />
+          </button>
         </div>
       </div>
     </footer>

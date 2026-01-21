@@ -2,26 +2,28 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { MapPin, Phone, MessageCircle, Mail, ArrowRight } from "lucide-react";
+import { Phone, MessageCircle, Mail, MapPin, ArrowRight } from "lucide-react";
 
 const contactMethods = [
   {
     icon: Phone,
     label: "Call Us",
-    value: "012 342 7911",
-    href: "tel:0123427911",
+    value: "074 582 8820",
+    href: "tel:+27745828820",
+    secondary: "012 342 7911",
+    secondaryHref: "tel:+27123427911",
   },
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    value: "074 582 8820",
+    value: "Quick Response",
     href: "https://wa.me/27745828820",
     primary: true,
   },
   {
     icon: Mail,
     label: "Email",
-    value: "info@bvtplanners.co.za",
+    value: "Get in Touch",
     href: "mailto:info@bvtplanners.co.za",
   },
 ];
@@ -31,124 +33,123 @@ export const Contact = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="py-20 lg:py-32 bg-background" ref={ref}>
+    <section id="contact" className="py-24 lg:py-36 bg-background" ref={ref}>
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Content */}
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+          {/* Content Side */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-accent font-semibold text-sm uppercase tracking-widest">
+            <span className="text-accent font-semibold text-xs uppercase tracking-[0.2em]">
               Contact Us
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-foreground mt-4 mb-6 leading-[1.1]">
-              Let's Start
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mt-4 mb-6 leading-[1.05] tracking-tight">
+              Let's Start Your
               <br />
-              <span className="text-gradient-brand">Your Project</span>
+              <span className="text-gradient-brand">Project.</span>
             </h2>
+            
             <p className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-md">
-              Ready to transform your property vision into reality? 
-              Contact us for a free consultation.
+              Ready to transform your property vision? Reach out today for a 
+              free consultation with our expert planning team.
             </p>
 
             {/* Contact Methods */}
-            <div className="space-y-4 mb-10">
+            <div className="grid gap-3 mb-10">
               {contactMethods.map((method, index) => (
                 <motion.a
                   key={method.label}
                   href={method.href}
-                  target={method.href.startsWith("http") ? "_blank" : undefined}
-                  rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  initial={{ opacity: 0, x: -20 }}
+                  target={method.label === "WhatsApp" ? "_blank" : undefined}
+                  rel={method.label === "WhatsApp" ? "noopener noreferrer" : undefined}
+                  initial={{ opacity: 0, x: -30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
-                  className={`flex items-center gap-4 p-4 rounded-xl transition-all duration-300 group ${
-                    method.primary 
-                      ? "bg-accent/10 border border-accent/20 hover:bg-accent/20" 
-                      : "bg-secondary hover:bg-secondary/80"
+                  transition={{ duration: 0.4, delay: 0.1 + index * 0.1 }}
+                  className={`flex items-center gap-4 p-5 rounded-2xl border transition-all duration-300 group ${
+                    method.primary
+                      ? "bg-gradient-brand border-transparent shadow-brand hover:shadow-glow hover:scale-[1.02]"
+                      : "bg-secondary border-border/50 hover:border-accent/30 hover:shadow-md"
                   }`}
                 >
-                  <div className={`w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                    method.primary ? "bg-accent/20" : "bg-background"
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                    method.primary 
+                      ? "bg-primary-foreground/20" 
+                      : "bg-gradient-brand-static shadow-brand"
                   }`}>
-                    <method.icon className={`w-5 h-5 ${method.primary ? "text-accent" : "text-muted-foreground"}`} />
+                    <method.icon className="w-6 h-6 text-primary-foreground" />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs text-muted-foreground mb-0.5">
+                  <div className="flex-1">
+                    <span className={`block text-sm font-medium ${method.primary ? 'text-primary-foreground/80' : 'text-muted-foreground'}`}>
                       {method.label}
-                    </p>
-                    <p className={`font-semibold truncate ${method.primary ? "text-accent" : "text-foreground"}`}>
+                    </span>
+                    <span className={`block font-bold ${method.primary ? 'text-primary-foreground' : 'text-foreground'}`}>
                       {method.value}
-                    </p>
+                    </span>
+                    {method.secondary && (
+                      <a href={method.secondaryHref} className="text-xs text-muted-foreground hover:text-accent">
+                        {method.secondary}
+                      </a>
+                    )}
                   </div>
-                  <ArrowRight className={`w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all ${
-                    method.primary ? "text-accent" : "text-muted-foreground"
+                  <ArrowRight className={`w-5 h-5 transition-transform group-hover:translate-x-1 ${
+                    method.primary ? 'text-primary-foreground' : 'text-muted-foreground group-hover:text-accent'
                   }`} />
                 </motion.a>
               ))}
             </div>
 
-            {/* Primary CTA */}
+            {/* CTA Button */}
+            <Button variant="brand" size="xl" className="btn-shimmer" asChild>
+              <a href="https://wa.me/27745828820" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+                <MessageCircle className="w-5 h-5" />
+                WhatsApp Us Now
+              </a>
+            </Button>
+          </motion.div>
+
+          {/* Map Side */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="relative h-[400px] lg:h-full min-h-[500px] rounded-3xl overflow-hidden shadow-xl">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.4849726379837!2d28.2617513!3d-25.7721767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e955f5d3e6d7f3d%3A0x8f9d8f8f8f8f8f8f!2s373%20Queen&#39;s%20Cres%2C%20Lynnwood%2C%20Pretoria%2C%200081!5e0!3m2!1sen!2sza!4v1629900000000!5m2!1sen!2sza"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="grayscale hover:grayscale-0 transition-all duration-500"
+              />
+            </div>
+            
+            {/* Address Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl glass border border-border/30 shadow-lg"
             >
-              <Button variant="brand" size="xl" className="w-full sm:w-auto justify-center" asChild>
-                <a href="https://wa.me/27745828820" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                  <MessageCircle className="w-5 h-5" />
-                  WhatsApp Us Now
-                </a>
-              </Button>
-            </motion.div>
-          </motion.div>
-
-          {/* Map Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="bg-secondary rounded-2xl overflow-hidden border border-border/50">
-              {/* Map */}
-              <div className="h-64 lg:h-80 relative">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.1234567890123!2d28.2578056!3d-25.7691667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9561234567890%3A0x1234567890abcdef!2s373%20Queen&#39;s%20Cres%2C%20Lynnwood%2C%20Pretoria%2C%200081!5e0!3m2!1sen!2sza!4v1234567890123"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Office Location"
-                  className="grayscale hover:grayscale-0 transition-all duration-500"
-                />
-              </div>
-
-              {/* Address */}
-              <div className="p-6 lg:p-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-lg font-bold text-foreground mb-1">
-                      Our Office
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      373 Queen's Cres, Lynnwood
-                      <br />
-                      Pretoria, 0081, South Africa
-                    </p>
-                    <p className="text-muted-foreground text-sm mt-2">
-                      Mon – Fri: 8:00 – 17:00
-                    </p>
-                  </div>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-brand-static flex items-center justify-center flex-shrink-0 shadow-brand">
+                  <MapPin className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-foreground mb-1">Our Office</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    373 Queen's Crescent, Lynnwood,
+                    <br />
+                    Pretoria, 0081, South Africa
+                  </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
