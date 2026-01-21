@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 
 const navLinks = [
   { href: "#home", label: "Home" },
@@ -19,11 +19,11 @@ export const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -38,81 +38,85 @@ export const Header = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-background/95 backdrop-blur-xl border-b border-border/50 shadow-sm"
-            : "bg-transparent"
+            ? "glass border-b border-border/50 shadow-sm py-3"
+            : "bg-transparent py-5"
         }`}
       >
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-18 lg:h-20">
-            {/* Logo - Refined */}
+          <nav className="flex items-center justify-between">
+            {/* Logo */}
             <a href="#home" className="flex items-center gap-3 group">
-              <div className="w-9 h-9 lg:w-10 lg:h-10 bg-gradient-brand rounded-lg flex items-center justify-center shadow-sm transition-transform group-hover:scale-105">
-                <span className="text-primary font-serif font-bold text-base lg:text-lg">B</span>
+              <div className={`w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-center font-bold text-primary-foreground text-lg shadow-brand transition-all ${isScrolled ? '' : 'shadow-glow'} group-hover:scale-105`}>
+                B
               </div>
-              <div className="hidden sm:block">
-                <span className="font-serif text-base lg:text-lg font-semibold text-foreground tracking-tight">
-                  BVT Planners
-                </span>
-              </div>
+              <span className={`font-bold text-lg tracking-tight transition-colors ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`}>
+                BVT Planners
+              </span>
             </a>
 
-            {/* Desktop Navigation - Minimal */}
-            <nav className="hidden lg:flex items-center gap-10">
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-1">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium text-foreground/60 hover:text-foreground transition-colors duration-200"
+                  className={`px-4 py-2 text-sm font-medium transition-colors rounded-xl hover:bg-accent/10 ${
+                    isScrolled ? 'text-foreground/70 hover:text-foreground' : 'text-primary-foreground/70 hover:text-primary-foreground'
+                  }`}
                 >
                   {link.label}
                 </a>
               ))}
-            </nav>
+            </div>
 
-            {/* CTA - Desktop */}
-            <div className="hidden lg:block">
-              <Button variant="brand" size="default" asChild>
-                <a href="#contact">Get Started</a>
+            {/* Desktop CTA */}
+            <div className="hidden lg:flex items-center gap-3">
+              <Button variant="brand" size="default" asChild className="btn-shimmer">
+                <a href="#contact" className="flex items-center gap-2">
+                  <Phone className="w-4 h-4" />
+                  Get Started
+                </a>
               </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg text-foreground hover:bg-secondary transition-colors"
-              aria-label="Toggle menu"
+              className={`lg:hidden w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
+                isScrolled ? 'hover:bg-secondary' : 'hover:bg-primary-foreground/10'
+              }`}
             >
               <AnimatePresence mode="wait">
                 {isMobileMenuOpen ? (
                   <motion.div
                     key="close"
-                    initial={{ opacity: 0, rotate: -90 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0, rotate: 90 }}
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X className="w-5 h-5" />
+                    <X className={`w-6 h-6 ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`} />
                   </motion.div>
                 ) : (
                   <motion.div
                     key="menu"
-                    initial={{ opacity: 0, rotate: 90 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0, rotate: -90 }}
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu className="w-5 h-5" />
+                    <Menu className={`w-6 h-6 ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`} />
                   </motion.div>
                 )}
               </AnimatePresence>
             </button>
-          </div>
+          </nav>
         </div>
       </motion.header>
 
-      {/* Mobile Menu - Full Screen Premium */}
+      {/* Mobile Menu - Full Screen */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -120,18 +124,9 @@ export const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 lg:hidden"
+            className="fixed inset-0 z-40 lg:hidden bg-background"
           >
-            {/* Background */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-background"
-            />
-            
-            {/* Content */}
-            <nav className="relative h-full flex flex-col justify-center px-8">
+            <nav className="h-full flex flex-col justify-center px-8">
               <div className="space-y-2">
                 {navLinks.map((link, index) => (
                   <motion.a
@@ -142,7 +137,7 @@ export const Header = () => {
                     exit={{ opacity: 0, x: -40 }}
                     transition={{ delay: index * 0.08, duration: 0.3 }}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-4xl sm:text-5xl font-serif font-semibold text-foreground py-3 hover:text-accent transition-colors"
+                    className="block text-4xl sm:text-5xl font-extrabold text-foreground py-3 hover:text-gradient-brand transition-colors tracking-tight"
                   >
                     {link.label}
                   </motion.a>
@@ -156,8 +151,9 @@ export const Header = () => {
                 transition={{ delay: 0.4 }}
                 className="mt-12"
               >
-                <Button variant="brand" size="xl" className="w-full justify-center" asChild>
-                  <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button variant="brand" size="xl" className="w-full justify-center btn-shimmer" asChild>
+                  <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2">
+                    <Phone className="w-5 h-5" />
                     Get Started
                   </a>
                 </Button>
@@ -172,7 +168,7 @@ export const Header = () => {
                 className="mt-auto pb-12 pt-16"
               >
                 <p className="text-sm text-muted-foreground">Get in touch</p>
-                <a href="tel:0745828820" className="text-lg font-medium text-foreground hover:text-accent transition-colors">
+                <a href="tel:+27745828820" className="text-lg font-bold text-foreground hover:text-accent transition-colors">
                   074 582 8820
                 </a>
               </motion.div>

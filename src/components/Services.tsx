@@ -85,23 +85,23 @@ export const Services = () => {
   };
 
   return (
-    <section id="services" className="py-20 lg:py-32 bg-background" ref={ref}>
+    <section id="services" className="py-24 lg:py-36 bg-background" ref={ref}>
       <div className="container mx-auto px-6 lg:px-8">
-        {/* Header with CTA */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 lg:mb-16">
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <span className="text-accent font-semibold text-sm uppercase tracking-widest">
+            <span className="text-accent font-semibold text-xs uppercase tracking-[0.2em]">
               Our Services
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-foreground mt-4 leading-[1.1]">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mt-4 leading-[1.05] tracking-tight">
               Expert Planning
               <br />
-              <span className="text-gradient-brand">Solutions</span>
+              <span className="text-gradient-brand">Solutions.</span>
             </h2>
           </motion.div>
           
@@ -111,7 +111,7 @@ export const Services = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="hidden lg:block"
           >
-            <Button variant="brand" size="lg" asChild className="group">
+            <Button variant="brand" size="lg" asChild className="group btn-shimmer">
               <a href="#contact" className="flex items-center gap-2">
                 Get a Quote
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -121,7 +121,7 @@ export const Services = () => {
         </div>
 
         {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -130,11 +130,11 @@ export const Services = () => {
               transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
               className="group"
             >
-              <div className="h-full p-6 lg:p-7 bg-secondary rounded-2xl border border-transparent hover:border-accent/20 hover:bg-background transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors">
-                  <service.icon className="w-6 h-6 text-accent" />
+              <div className="h-full p-7 bg-secondary rounded-3xl border border-transparent hover:border-accent/20 hover:bg-background hover:shadow-lg transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-brand flex items-center justify-center mb-6 shadow-brand group-hover:scale-105 transition-transform">
+                  <service.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
-                <h3 className="font-serif text-lg lg:text-xl font-bold text-foreground mb-2">
+                <h3 className="font-bold text-xl text-foreground mb-3 tracking-tight">
                   {service.title}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
@@ -150,7 +150,6 @@ export const Services = () => {
           <div
             ref={carouselRef}
             className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 pb-4 -mx-6 px-6"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             onScroll={(e) => {
               const target = e.target as HTMLDivElement;
               const cardWidth = target.offsetWidth * 0.85 + 16;
@@ -166,11 +165,11 @@ export const Services = () => {
                 transition={{ duration: 0.4, delay: 0.1 + index * 0.03 }}
                 className="flex-shrink-0 w-[85%] snap-start"
               >
-                <div className="h-full p-6 bg-secondary rounded-2xl border border-border/50">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
-                    <service.icon className="w-6 h-6 text-accent" />
+                <div className="h-full p-6 bg-secondary rounded-3xl border border-border/50">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-brand flex items-center justify-center mb-5 shadow-brand">
+                    <service.icon className="w-6 h-6 text-primary-foreground" />
                   </div>
-                  <h3 className="font-serif text-xl font-bold text-foreground mb-2">
+                  <h3 className="font-bold text-xl text-foreground mb-2 tracking-tight">
                     {service.title}
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">
@@ -182,37 +181,33 @@ export const Services = () => {
           </div>
 
           {/* Carousel Controls */}
-          <div className="flex items-center justify-between mt-6">
-            <div className="flex gap-1.5">
+          <div className="flex items-center justify-between mt-8">
+            <div className="flex gap-2">
               {services.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => scrollToIndex(index)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                  className={`h-2 rounded-full transition-all duration-300 ${
                     index === currentIndex
-                      ? "w-6 bg-accent"
-                      : "w-1.5 bg-border hover:bg-muted-foreground"
+                      ? "w-8 bg-gradient-brand shadow-brand"
+                      : "w-2 bg-border hover:bg-muted-foreground"
                   }`}
                 />
               ))}
             </div>
             <div className="flex gap-2">
-              <Button
-                variant="outline"
-                size="icon"
+              <button
                 onClick={handlePrev}
-                className="w-10 h-10 rounded-full"
+                className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors"
               >
-                <ChevronLeft className="w-4 h-4" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
                 onClick={handleNext}
-                className="w-10 h-10 rounded-full"
+                className="w-12 h-12 rounded-full bg-gradient-brand flex items-center justify-center shadow-brand hover:scale-105 transition-transform"
               >
-                <ChevronRight className="w-4 h-4" />
-              </Button>
+                <ChevronRight className="w-5 h-5 text-primary-foreground" />
+              </button>
             </div>
           </div>
 
@@ -221,10 +216,10 @@ export const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-8"
+            className="mt-10"
           >
-            <Button variant="brand" size="lg" className="w-full justify-center" asChild>
-              <a href="#contact" className="flex items-center gap-2">
+            <Button variant="brand" size="lg" className="w-full btn-shimmer" asChild>
+              <a href="#contact" className="flex items-center justify-center gap-2">
                 Get a Quote
                 <ArrowRight className="w-4 h-4" />
               </a>
