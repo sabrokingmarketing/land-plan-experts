@@ -47,11 +47,8 @@ export const Header = () => {
         <div className="container mx-auto px-6 lg:px-8">
           <nav className="flex items-center justify-between">
             {/* Logo */}
-            <a href="#home" className="flex items-center gap-3 group">
-              <div className={`w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-center font-bold text-primary-foreground text-lg shadow-brand transition-all ${isScrolled ? '' : 'shadow-glow'} group-hover:scale-105`}>
-                B
-              </div>
-              <span className={`font-bold text-lg tracking-tight transition-colors ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`}>
+            <a href="#home" className="flex items-center group">
+              <span className={`font-bold text-lg tracking-tight transition-colors ${isScrolled ? 'text-foreground' : 'text-primary-foreground'} group-hover:text-accent`}>
                 BVT Planners
               </span>
             </a>
