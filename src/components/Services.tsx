@@ -111,7 +111,7 @@ export const Services = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="hidden lg:block"
           >
-            <Button variant="brand" size="lg" asChild className="group btn-shimmer">
+            <Button variant="brand" size="lg" asChild className="group">
               <a href="#contact" className="flex items-center gap-2">
                 Get a Quote
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -218,7 +218,7 @@ export const Services = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="mt-10"
           >
-            <Button variant="brand" size="lg" className="w-full btn-shimmer" asChild>
+            <Button variant="brand" size="lg" className="w-full" asChild>
               <a href="#contact" className="flex items-center justify-center gap-2">
                 Get a Quote
                 <ArrowRight className="w-4 h-4" />

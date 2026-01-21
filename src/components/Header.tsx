@@ -73,7 +73,7 @@ export const Header = () => {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3">
-              <Button variant="brand" size="default" asChild className="btn-shimmer">
+              <Button variant="brand" size="default" asChild>
                 <a href="#contact" className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
                   Get Started
@@ -151,7 +151,7 @@ export const Header = () => {
                 transition={{ delay: 0.4 }}
                 className="mt-12"
               >
-                <Button variant="brand" size="xl" className="w-full justify-center btn-shimmer" asChild>
+                <Button variant="brand" size="xl" className="w-full justify-center" asChild>
                   <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2">
                     <Phone className="w-5 h-5" />
                     Get Started

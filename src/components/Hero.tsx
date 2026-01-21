@@ -75,7 +75,7 @@ export const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
           >
-            <Button variant="brand" size="xl" asChild className="group btn-shimmer">
+            <Button variant="brand" size="xl" asChild className="group">
               <a href="#services" className="flex items-center justify-center gap-3">
                 Explore Services
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
