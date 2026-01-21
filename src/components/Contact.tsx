@@ -69,14 +69,14 @@ export const Contact = () => {
                   transition={{ duration: 0.4, delay: 0.1 + index * 0.1 }}
                   className={`flex items-center gap-4 p-5 rounded-2xl border transition-all duration-300 group ${
                     method.primary
-                      ? "bg-gradient-brand border-transparent shadow-brand hover:shadow-glow hover:scale-[1.02]"
+                      ? "bg-accent border-transparent shadow-lg hover:bg-accent/90 hover:shadow-xl hover:scale-[1.02]"
                       : "bg-secondary border-border/50 hover:border-accent/30 hover:shadow-md"
                   }`}
                 >
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
                     method.primary 
                       ? "bg-primary-foreground/20" 
-                      : "bg-gradient-brand-static shadow-brand"
+                      : "bg-accent shadow-lg"
                   }`}>
                     <method.icon className="w-6 h-6 text-primary-foreground" />
                   </div>
@@ -137,7 +137,7 @@ export const Contact = () => {
               className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl glass border border-border/30 shadow-lg"
             >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-brand-static flex items-center justify-center flex-shrink-0 shadow-brand">
+                <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center flex-shrink-0 shadow-lg">
                   <MapPin className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <div>
