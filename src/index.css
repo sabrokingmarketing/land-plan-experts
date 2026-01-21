@@ -169,30 +169,30 @@
 }
 
 @layer components {
-  /* Animated Gradient Text */
+  /* Animated Gradient Text - Slow & Premium */
   .text-gradient-brand {
-    background: linear-gradient(135deg, hsl(213 94% 55%), hsl(210 100% 70%), hsl(213 94% 55%));
-    background-size: 200% 200%;
-    animation: gradient-shift 3s ease infinite;
+    background: linear-gradient(90deg, hsl(213 94% 55%), hsl(210 100% 70%), hsl(220 90% 60%), hsl(213 94% 55%));
+    background-size: 300% 100%;
+    animation: gradient-shift 8s ease-in-out infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .text-gradient-gold {
-    background: linear-gradient(135deg, hsl(38 92% 55%), hsl(45 93% 70%), hsl(38 92% 55%));
-    background-size: 200% 200%;
-    animation: gradient-shift 4s ease infinite;
+    background: linear-gradient(90deg, hsl(38 92% 55%), hsl(45 93% 70%), hsl(40 90% 60%), hsl(38 92% 55%));
+    background-size: 300% 100%;
+    animation: gradient-shift 10s ease-in-out infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Animated Gradient Background */
+  /* Animated Gradient Background - Slow & Premium */
   .bg-gradient-brand {
-    background: linear-gradient(135deg, hsl(213 94% 55%), hsl(210 100% 70%), hsl(213 94% 55%));
-    background-size: 200% 200%;
-    animation: gradient-shift 3s ease infinite;
+    background: linear-gradient(135deg, hsl(213 94% 55%), hsl(210 100% 70%), hsl(220 90% 60%), hsl(213 94% 55%));
+    background-size: 300% 300%;
+    animation: gradient-shift 8s ease-in-out infinite;
   }
 
   .bg-gradient-brand-static {
@@ -204,9 +204,9 @@
   }
 
   .bg-gradient-gold {
-    background: linear-gradient(135deg, hsl(38 92% 55%), hsl(45 93% 70%), hsl(38 92% 55%));
-    background-size: 200% 200%;
-    animation: gradient-shift 4s ease infinite;
+    background: linear-gradient(135deg, hsl(38 92% 55%), hsl(45 93% 70%), hsl(40 90% 60%), hsl(38 92% 55%));
+    background-size: 300% 300%;
+    animation: gradient-shift 10s ease-in-out infinite;
   }
 
   /* Premium Card Styles */
@@ -234,7 +234,7 @@
     -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
 
-  /* Button Gradient Shimmer */
+  /* Button Gradient Shimmer - Slow & Premium */
   .btn-shimmer {
     position: relative;
     overflow: hidden;
@@ -249,11 +249,13 @@
     height: 100%;
     background: linear-gradient(
       90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 40%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.1) 60%,
+      transparent 100%
     );
-    animation: shimmer 2s infinite;
+    animation: shimmer 4s ease-in-out infinite;
   }
 
   /* Shadow utilities */
