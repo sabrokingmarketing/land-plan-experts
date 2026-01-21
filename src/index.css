@@ -250,12 +250,13 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.1) 40%,
-      rgba(255, 255, 255, 0.2) 50%,
-      rgba(255, 255, 255, 0.1) 60%,
+      rgba(255, 255, 255, 0.08) 45%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.08) 55%,
       transparent 100%
     );
-    animation: shimmer 4s ease-in-out infinite;
+    animation: shimmer 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation-delay: 2s;
   }
 
   /* Shadow utilities */
@@ -297,9 +298,17 @@
   @keyframes shimmer {
     0% {
       left: -100%;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
     }
     100% {
       left: 100%;
+      opacity: 0;
     }
   }
 
