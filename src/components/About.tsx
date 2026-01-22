@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Award, Shield, TrendingUp, ArrowRight, Clock, CheckCircle, Users } from "lucide-react";
+import { Award, Shield, TrendingUp, ArrowRight, Clock, CheckCircle, Users, Download } from "lucide-react";
 import pretoriaSunset from "@/assets/pretoria-sunset.jpg";
+import { Button } from "@/components/ui/button";
 
 const credentials = [
   {
@@ -25,7 +26,7 @@ const credentials = [
 const stats = [
   { value: "30+", label: "Years Experience", icon: Clock },
   { value: "500+", label: "Projects Completed", icon: CheckCircle },
-  { value: "100%", label: "Client Satisfaction", icon: Users },
+  { value: "100%", label: "SACPLAN Registered Planners", icon: Users },
 ];
 
 export const About = () => {
@@ -137,12 +138,12 @@ export const About = () => {
                     initial={{ opacity: 0, x: 30 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
-                    className="flex items-center gap-4 p-4 bg-background rounded-2xl border border-border/50 hover:border-accent/30 hover:shadow-md transition-all duration-300 group"
+                    className={`flex items-center gap-4 p-4 bg-background rounded-2xl border border-border/50 hover:border-accent/30 hover:shadow-md transition-all duration-300 group ${item.title === "30+ Years" ? "flex-col sm:flex-row" : ""}`}
                   >
                     <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-105 transition-transform">
                       <item.icon className="w-6 h-6 text-primary-foreground" />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h3 className="font-bold text-foreground text-lg tracking-tight">
                         {item.title}
                       </h3>
@@ -150,6 +151,27 @@ export const About = () => {
                         {item.description}
                       </p>
                     </div>
+                    {item.title === "30+ Years" && (
+                      <div className="w-full sm:w-auto mt-3 sm:mt-0">
+                        <Button
+                          asChild
+                          variant="brand"
+                          size="sm"
+                          className="w-full sm:w-auto"
+                        >
+                          <a
+                            href="/BVT COMPANY PROFILE.pdf"
+                            download="BVT COMPANY PROFILE.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2"
+                          >
+                            <Download className="w-4 h-4" />
+                            View Company Profile
+                          </a>
+                        </Button>
+                      </div>
+                    )}
                   </motion.div>
                 ))}
               </div>

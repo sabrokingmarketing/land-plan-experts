@@ -120,9 +120,22 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 8.5rem; /* Account for fixed header height (logo + padding) */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      scroll-padding-top: 9rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: 9.5rem;
+    }
   }
 
   body {
@@ -247,6 +260,12 @@
   .shadow-glow {
     box-shadow: var(--shadow-glow);
   }
+
+  /* Logo color filters */
+  .logo-blue {
+    /* Convert black to brand accent blue (hsl(213, 94%, 55%)) */
+    filter: brightness(0) saturate(100%) invert(40%) sepia(100%) saturate(2000%) hue-rotate(195deg) brightness(110%) contrast(110%);
+  }
 }
 
 @layer utilities {
@@ -334,6 +353,26 @@
 
   .animate-float {
     animation: float 3s ease-in-out infinite;
+  }
+
+  /* Infinite scroll animation for logo carousel */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-33.333%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+    display: flex;
+    width: fit-content;
+  }
+
+  .animate-scroll:hover {
+    animation-play-state: paused;
   }
 
   /* Hide scrollbar utility */

@@ -13,6 +13,7 @@ import {
   FileCheck,
   LineChart,
 } from "lucide-react";
+import { LogoCarousel } from "@/components/LogoCarousel";
 
 const services = [
   {
@@ -226,6 +227,16 @@ export const Services = () => {
             </Button>
           </motion.div>
         </div>
+
+        {/* Logo Carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-20"
+        >
+          <LogoCarousel />
+        </motion.div>
       </div>
     </section>
   );

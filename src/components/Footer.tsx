@@ -12,14 +12,6 @@ export const Footer = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16 pb-12 border-b border-primary-foreground/10">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-center font-bold text-primary-foreground text-lg shadow-brand">
-                B
-              </div>
-              <span className="font-bold text-lg text-primary-foreground tracking-tight">
-                BVT Planners
-              </span>
-            </div>
             <p className="text-primary-foreground/60 text-sm leading-relaxed">
               Expert land use planning and development consulting in Pretoria and surrounding areas.
             </p>

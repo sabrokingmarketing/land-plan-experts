@@ -12,17 +12,7 @@ const navLinks = [
 ];
 
 export const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -38,33 +28,17 @@ export const Header = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "glass border-b border-border/50 shadow-sm py-3"
-            : "bg-transparent py-5"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 glass border-b border-border/50 shadow-sm py-3"
       >
         <div className="container mx-auto px-6 lg:px-8">
           <nav className="flex items-center justify-between">
-            {/* Logo */}
-            <a href="#home" className="flex items-center gap-3 group">
-              <div className={`w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-center font-bold text-primary-foreground text-lg shadow-brand transition-all ${isScrolled ? '' : 'shadow-glow'} group-hover:scale-105`}>
-                B
-              </div>
-              <span className={`font-bold text-lg tracking-tight transition-colors ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`}>
-                BVT Planners
-              </span>
-            </a>
-
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`px-4 py-2 text-sm font-medium transition-colors rounded-xl hover:bg-accent/10 ${
-                    isScrolled ? 'text-foreground/70 hover:text-foreground' : 'text-primary-foreground/70 hover:text-primary-foreground'
-                  }`}
+                  className="px-4 py-2 text-sm font-medium transition-colors rounded-xl hover:bg-accent/10 text-foreground/70 hover:text-foreground"
                 >
                   {link.label}
                 </a>
@@ -84,9 +58,7 @@ export const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`lg:hidden w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
-                isScrolled ? 'hover:bg-secondary' : 'hover:bg-primary-foreground/10'
-              }`}
+              className="lg:hidden w-10 h-10 rounded-xl flex items-center justify-center transition-colors hover:bg-secondary"
             >
               <AnimatePresence mode="wait">
                 {isMobileMenuOpen ? (
@@ -97,7 +69,7 @@ export const Header = () => {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X className={`w-6 h-6 ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`} />
+                    <X className="w-6 h-6 text-foreground" />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -107,7 +79,7 @@ export const Header = () => {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu className={`w-6 h-6 ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`} />
+                    <Menu className="w-6 h-6 text-foreground" />
                   </motion.div>
                 )}
               </AnimatePresence>
