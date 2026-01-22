@@ -32,6 +32,13 @@ export const Header = () => {
       >
         <div className="container mx-auto px-6 lg:px-8">
           <nav className="flex items-center justify-between">
+            {/* Logo */}
+            <a href="#home" className="flex items-center group">
+              <span className="font-bold text-lg tracking-tight transition-colors text-foreground group-hover:text-accent">
+                BVT Planners
+              </span>
+            </a>
+
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
               {navLinks.map((link) => (

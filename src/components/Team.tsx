@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { Download } from "lucide-react";
+import { useRef, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { ChevronLeft, ChevronRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import teamBertus from "@/assets/team-bertus.png";
@@ -47,9 +48,81 @@ const team = [
   },
 ];
 
+const TeamCard = ({ member, index, isInView }: { member: typeof team[0]; index: number; isInView: boolean }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    animate={isInView ? { opacity: 1, y: 0 } : {}}
+    transition={{ duration: 0.4, delay: 0.1 + index * 0.1 }}
+    className="group h-full"
+  >
+    <div className="h-full flex flex-col items-center text-center p-6 md:p-6 bg-background rounded-3xl border border-border/50 hover:border-accent/30 hover:shadow-lg transition-all duration-300">
+      {/* Photo */}
+      <div className="w-36 h-36 md:w-28 md:h-28 lg:w-32 lg:h-32 flex-shrink-0 rounded-2xl overflow-hidden shadow-lg group-hover:scale-105 group-hover:shadow-xl transition-all duration-300">
+        <img
+          src={member.image}
+          alt={member.name}
+          className="w-full h-full object-cover object-top"
+        />
+      </div>
+      
+      {/* Info */}
+      <div className="mt-5 flex flex-col flex-1 justify-start">
+        <h3 className="font-bold text-foreground text-base md:text-sm lg:text-base tracking-tight leading-tight min-h-[2.5rem] flex items-center justify-center">
+          {member.name}
+        </h3>
+        <p className="text-accent text-sm md:text-xs font-medium mt-1 min-h-[1rem]">
+          {member.role}
+        </p>
+        <p className="text-muted-foreground text-sm md:text-xs mt-1 min-h-[1rem]">
+          {member.title}
+        </p>
+        
+        {/* CV Download Button */}
+        <div className="mt-auto pt-4">
+          {member.cvFile ? (
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="w-full text-xs"
+            >
+              <a
+                href={`/${member.cvFile}`}
+                download={member.cvFile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2"
+              >
+                <Download className="w-3.5 h-3.5" />
+                Download CV
+              </a>
+            </Button>
+          ) : (
+            <div className="h-9"></div>
+          )}
+        </div>
+      </div>
+    </div>
+  </motion.div>
+);
+
 export const Team = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    align: "center",
+    containScroll: "trimSnaps"
+  });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const scrollPrev = () => emblaApi?.scrollPrev();
+  const scrollNext = () => emblaApi?.scrollNext();
+
+  // Update selected index on scroll
+  emblaApi?.on("select", () => {
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  });
 
   return (
     <section id="team" className="py-24 lg:py-36 bg-secondary" ref={ref}>
@@ -59,7 +132,7 @@ export const Team = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-12 md:mb-16"
         >
           <span className="text-accent font-semibold text-xs uppercase tracking-[0.2em]">
             Our Team
@@ -71,63 +144,61 @@ export const Team = () => {
           </h2>
         </motion.div>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 lg:gap-6">
-          {team.map((member, index) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.1 + index * 0.1 }}
-              className="group"
+        {/* Mobile Carousel */}
+        <div className="md:hidden">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {team.map((member, index) => (
+                <div 
+                  key={member.name} 
+                  className="flex-[0_0_85%] min-w-0 px-2"
+                >
+                  <TeamCard member={member} index={index} isInView={isInView} />
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Carousel Controls */}
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <button
+              onClick={scrollPrev}
+              className="w-12 h-12 rounded-full bg-background border border-border/50 flex items-center justify-center hover:border-accent/50 hover:bg-accent/10 transition-all duration-300"
+              aria-label="Previous team member"
             >
-              <div className="text-center p-6 bg-background rounded-3xl border border-border/50 hover:border-accent/30 hover:shadow-lg transition-all duration-300 flex flex-col h-full">
-                {/* Photo */}
-                <div className="w-36 h-36 mx-auto mb-5 rounded-2xl overflow-hidden shadow-lg group-hover:scale-105 group-hover:shadow-xl transition-all duration-300">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover object-top"
-                  />
-                </div>
-                
-                {/* Info */}
-                <h3 className="font-bold text-foreground text-base mb-1 tracking-tight leading-tight">
-                  {member.name}
-                </h3>
-                <p className="text-accent text-xs font-medium mb-1">
-                  {member.role}
-                </p>
-                <p className="text-muted-foreground text-xs mb-4">
-                  {member.title}
-                </p>
-                
-                {/* CV Download Button */}
-                <div className="mt-auto">
-                  {member.cvFile ? (
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="sm"
-                      className="w-full text-xs"
-                    >
-                      <a
-                        href={`/${member.cvFile}`}
-                        download={member.cvFile}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2"
-                      >
-                        <Download className="w-3.5 h-3.5" />
-                        Download CV
-                      </a>
-                    </Button>
-                  ) : (
-                    <div className="h-9"></div>
-                  )}
-                </div>
-              </div>
-            </motion.div>
+              <ChevronLeft className="w-5 h-5 text-foreground" />
+            </button>
+            
+            {/* Dots */}
+            <div className="flex gap-2">
+              {team.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => emblaApi?.scrollTo(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    selectedIndex === index 
+                      ? "bg-accent w-6" 
+                      : "bg-border hover:bg-accent/50"
+                  }`}
+                  aria-label={`Go to team member ${index + 1}`}
+                />
+              ))}
+            </div>
+            
+            <button
+              onClick={scrollNext}
+              className="w-12 h-12 rounded-full bg-background border border-border/50 flex items-center justify-center hover:border-accent/50 hover:bg-accent/10 transition-all duration-300"
+              aria-label="Next team member"
+            >
+              <ChevronRight className="w-5 h-5 text-foreground" />
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-5 gap-5 lg:gap-6">
+          {team.map((member, index) => (
+            <TeamCard key={member.name} member={member} index={index} isInView={isInView} />
           ))}
         </div>
       </div>

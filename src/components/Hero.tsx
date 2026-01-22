@@ -110,7 +110,7 @@ export const Hero = () => {
         }} transition={{
           duration: 0.6,
           delay: 0.5
-        }} className="mt-12 lg:hidden">
+        }} className="mt-12 hidden lg:block">
             <div className="grid grid-cols-3 gap-3">
               {[{
               value: "30+",
