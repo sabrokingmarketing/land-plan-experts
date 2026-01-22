@@ -101,40 +101,7 @@ export const Hero = () => {
               </a>
             </Button>
           </motion.div>
-
-          {/* Trust Badges - Mobile */}
-          <motion.div initial={{
-          opacity: 0
-        }} animate={{
-          opacity: 1
-        }} transition={{
-          duration: 0.6,
-          delay: 0.5
-        }} className="mt-12 hidden lg:block">
-            <div className="grid grid-cols-3 gap-3">
-              {[{
-              value: "30+",
-              label: "Years"
-            }, {
-              value: "500+",
-              label: "Projects"
-            }, {
-              value: "100%",
-              label: "Success"
-            }].map(stat => <div key={stat.label} className="text-center p-4 rounded-2xl bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10">
-                  <div className="text-2xl font-bold text-primary-foreground">
-                    {stat.value}
-                  </div>
-                  <div className="text-[10px] text-primary-foreground/50 uppercase tracking-wider font-medium">
-                    {stat.label}
-                  </div>
-                </div>)}
-            </div>
-          </motion.div>
         </div>
-
-        {/* Stats Row - Desktop */}
-        
       </div>
 
       {/* Scroll Indicator */}
