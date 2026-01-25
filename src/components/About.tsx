@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { Award, Shield, TrendingUp, ArrowRight, Clock, CheckCircle, Users, Download } from "lucide-react";
 import pretoriaSunset from "@/assets/pretoria-sunset.jpg";
 import { Button } from "@/components/ui/button";
+import { downloadPDF } from "@/lib/utils";
 
 const credentials = [
   {
@@ -25,8 +26,8 @@ const credentials = [
 
 const stats = [
   { value: "30+", label: "Years Experience", icon: Clock },
-  { value: "500+", label: "Projects Completed", icon: CheckCircle },
   { value: "100%", label: "SACPLAN Registered Planners", icon: Users },
+  { value: "1K", label: "Projects Completed", icon: CheckCircle },
 ];
 
 export const About = () => {
@@ -126,7 +127,7 @@ export const About = () => {
               
               <p className="text-base text-muted-foreground/80 leading-relaxed mb-10">
                 As members of The South African Association of Professional 
-                Planners (SAACPP), with all planners registered with SACPLAN, 
+                Planners (SACPLAN), with all planners registered with SAACPP, 
                 we uphold the highest professional standards in every project.
               </p>
 
@@ -154,21 +155,13 @@ export const About = () => {
                     {item.title === "30+ Years" && (
                       <div className="w-full sm:w-auto mt-3 sm:mt-0">
                         <Button
-                          asChild
                           variant="brand"
                           size="sm"
                           className="w-full sm:w-auto"
+                          onClick={() => downloadPDF("BVT COMPANY PROFILE.pdf")}
                         >
-                          <a
-                            href="/BVT COMPANY PROFILE.pdf"
-                            download="BVT COMPANY PROFILE.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2"
-                          >
-                            <Download className="w-4 h-4" />
-                            View Company Profile
-                          </a>
+                          <Download className="w-4 h-4" />
+                          View Company Profile
                         </Button>
                       </div>
                     )}

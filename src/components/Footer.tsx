@@ -9,14 +9,7 @@ export const Footer = () => {
     <footer className="bg-primary py-16">
       <div className="container mx-auto px-6 lg:px-8">
         {/* Main Footer */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16 pb-12 border-b border-primary-foreground/10">
-          {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <p className="text-primary-foreground/60 text-sm leading-relaxed">
-              Expert land use planning and development consulting in Pretoria and surrounding areas.
-            </p>
-          </div>
-
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 pb-12 border-b border-primary-foreground/10">
           {/* Quick Links */}
           <div>
             <h4 className="font-bold text-primary-foreground mb-5 text-sm uppercase tracking-wider">
@@ -93,9 +86,22 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8">
-          <p className="text-primary-foreground/40 text-xs text-center sm:text-left">
-            © {new Date().getFullYear()} Bertus van Tonder Town Planners. All rights reserved.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p className="text-primary-foreground/40 text-xs text-center sm:text-left">
+              © 2026 Bertus van Tonder Town Planning. All rights reserved.
+            </p>
+            <p className="text-primary-foreground/40 text-xs text-center sm:text-left">
+              Built by{" "}
+              <a
+                href="https://sabrokingmarketing.co.za"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary-foreground/60 hover:text-primary-foreground transition-colors underline"
+              >
+                SA Broking Marketing
+              </a>
+            </p>
+          </div>
           <button
             onClick={scrollToTop}
             className="w-10 h-10 rounded-full bg-gradient-brand flex items-center justify-center shadow-brand hover:scale-105 hover:shadow-glow transition-all"

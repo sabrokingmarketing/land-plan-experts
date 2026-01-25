@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { downloadPDF } from "@/lib/utils";
 
 import teamBertus from "@/assets/team-bertus.png";
 import teamNdumiso from "@/assets/team-ndumiso.png";
@@ -81,21 +82,13 @@ const TeamCard = ({ member, index, isInView }: { member: typeof team[0]; index: 
         <div className="mt-auto pt-4">
           {member.cvFile ? (
             <Button
-              asChild
               variant="outline"
               size="sm"
               className="w-full text-xs"
+              onClick={() => downloadPDF(member.cvFile!)}
             >
-              <a
-                href={`/${member.cvFile}`}
-                download={member.cvFile}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2"
-              >
-                <Download className="w-3.5 h-3.5" />
-                Download CV
-              </a>
+              <Download className="w-3.5 h-3.5" />
+              Download CV
             </Button>
           ) : (
             <div className="h-9"></div>

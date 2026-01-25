@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
+import logoNew from "@/assets/logo-new.svg";
 
 const navLinks = [
   { href: "#home", label: "Home" },
@@ -28,24 +29,26 @@ export const Header = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 glass border-b border-border/50 shadow-sm py-3"
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white border-b border-border/50 shadow-sm py-0"
       >
-        <div className="container mx-auto px-6 lg:px-8">
-          <nav className="flex items-center justify-between">
+        <div className="container mx-auto px-2 lg:px-3">
+          <nav className="relative flex items-center justify-between py-1">
             {/* Logo */}
-            <a href="#home" className="flex items-center group">
-              <span className="font-bold text-lg tracking-tight transition-colors text-foreground group-hover:text-accent">
-                BVT Planners
-              </span>
+            <a href="#home" className="flex items-center group p-0 m-0 z-10">
+              <img 
+                src={logoNew} 
+                alt="Bertus van Tonder Townplanning Consulting" 
+                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto transition-opacity group-hover:opacity-80"
+              />
             </a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
+            {/* Desktop Navigation - Centered */}
+            <div className="hidden lg:flex items-center gap-0.5 absolute left-1/2 transform -translate-x-1/2">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="px-4 py-2 text-sm font-medium transition-colors rounded-xl hover:bg-accent/10 text-foreground/70 hover:text-foreground"
+                  className="px-3 py-1.5 text-sm font-medium transition-colors rounded-xl hover:bg-accent/10 text-foreground/70 hover:text-foreground"
                 >
                   {link.label}
                 </a>
@@ -53,10 +56,10 @@ export const Header = () => {
             </div>
 
             {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center gap-3">
-              <Button variant="brand" size="default" asChild>
-                <a href="#contact" className="flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
+            <div className="hidden lg:flex items-center gap-1 z-10">
+              <Button variant="brand" size="sm" asChild>
+                <a href="#contact" className="flex items-center gap-1.5">
+                  <Phone className="w-3.5 h-3.5" />
                   Get Started
                 </a>
               </Button>

@@ -74,7 +74,7 @@ export const Hero = () => {
           delay: 0.2
         }} className="text-lg sm:text-xl lg:text-2xl text-primary-foreground/70 max-w-xl leading-relaxed mb-10 font-normal">
             30+ years transforming property visions into reality. 
-            Expert planning solutions for Pretoria and beyond.
+            Expert planning solutions for Gauteng and beyond.
           </motion.p>
 
           {/* CTA Buttons */}
