@@ -87,10 +87,8 @@ const TeamCard = ({ member, index, isInView }: { member: typeof team[0]; index: 
               className="w-full text-xs"
             >
               <a
-                href={`/${member.cvFile}`}
+                href={`${import.meta.env.BASE_URL}docs/${member.cvFile}`}
                 download={member.cvFile}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2"
               >
                 <Download className="w-3.5 h-3.5" />
