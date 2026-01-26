@@ -35,7 +35,16 @@ export const Footer = () => {
               Services
             </h4>
             <ul className="space-y-3">
-              {["Rezoning", "Subdivisions", "Township", "SPLUMA"].map((service) => (
+              {[
+                "Rezoning",
+                "Subdivisions",
+                "Removal of Restrictions",
+                "Consent Uses",
+                "Second Dwelling",
+                "Township Establishment",
+                "SPLUMA Certificates",
+                "Feasibility Studies",
+              ].map((service) => (
                 <li key={service}>
                   <a
                     href="#services"
