@@ -24,7 +24,7 @@ const contactMethods = [
     icon: Mail,
     label: "Email",
     value: "Get in Touch",
-    href: "mailto:info@bvtplanners.co.za",
+    href: "mailto:bertus@bvtplan.co.za",
   },
 ];
 
