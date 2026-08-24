@@ -32,7 +32,7 @@ const team = [
     role: "Planning Associate",
     title: "Candidate Planner",
     image: teamAldrich,
-    cvFile: "SACPLAN_SERTIFIKAAT_-_CANDIDATE_PLANNER.pdf",
+    cvFile: "SACPLAN_CERTIFICATE-_CANDIDATE_PLANNER_2026_-_2027.pdf",
   },
   {
     name: "Allen van Vollenstee",
