@@ -39,7 +39,7 @@ const team = [
     role: "Planning Associate",
     title: "Candidate Planner",
     image: teamAllen,
-    cvFile: "7309145013080-SACPLAN.pdf",
+    cvFile: "7309145013080-SACPLAN-3.pdf",
   },
   {
     name: "Elliouse Flynn",
