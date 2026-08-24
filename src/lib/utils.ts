@@ -6,16 +6,16 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * Downloads a PDF file from the public folder
+ * Downloads a PDF file from the public/docs folder
  * @param filename - The filename of the PDF (e.g., "document.pdf")
  */
 export async function downloadPDF(filename: string) {
   try {
-    const response = await fetch(`/${filename}`);
+    const response = await fetch(`/docs/${filename}`);
     if (!response.ok) {
       throw new Error(`Failed to fetch PDF: ${response.statusText}`);
     }
-    
+
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -28,6 +28,6 @@ export async function downloadPDF(filename: string) {
   } catch (error) {
     console.error('Error downloading PDF:', error);
     // Fallback: open in new tab if download fails
-    window.open(`/${filename}`, '_blank');
+    window.open(`/docs/${filename}`, '_blank');
   }
 }
