@@ -158,7 +158,7 @@ export const About = () => {
                           variant="brand"
                           size="sm"
                           className="w-full sm:w-auto"
-                          onClick={() => downloadPDF("BVT COMPANY PROFILE.pdf")}
+                          onClick={() => downloadPDF("BVT_COMPANY_PROFILE.pdf")}
                         >
                           <Download className="w-4 h-4" />
                           View Company Profile
