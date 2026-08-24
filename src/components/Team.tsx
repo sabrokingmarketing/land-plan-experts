@@ -25,7 +25,7 @@ const team = [
     role: "Senior Planner",
     title: "Professional Planner",
     image: teamNdumiso,
-    cvFile: "9512055386085-SACPLAN_CERT.pdf",
+    cvFile: "9512055386085-SACPLAN_2.pdf",
   },
   {
     name: "Aldrich van de Merwe",
