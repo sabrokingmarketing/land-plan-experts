@@ -18,7 +18,7 @@ const team = [
     role: "Principal & Managing Director",
     title: "Professional Planner",
     image: teamBertus,
-    cvFile: "CV_JA_van_Tonder_Jan_2026.pdf",
+    cvFile: "7309145013080-SACPLAN-2.pdf",
   },
   {
     name: "Ndumiso Nkosi",
