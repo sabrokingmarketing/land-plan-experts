@@ -181,7 +181,7 @@ export const Team = () => {
         </div>
 
         {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-5 gap-5 lg:gap-6">
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {team.map((member, index) => (
             <TeamCard key={member.name} member={member} index={index} isInView={isInView} />
           ))}
