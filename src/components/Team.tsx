@@ -6,8 +6,7 @@ import { ChevronLeft, ChevronRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { downloadPDF } from "@/lib/utils";
 
-import teamBertusAsset from "@/assets/team-bertus-new.png.asset.json";
-const teamBertus = teamBertusAsset.url;
+import teamBertus from "@/assets/team-bertus-new.png";
 import teamNdumiso from "@/assets/team-ndumiso.png";
 import teamAldrich from "@/assets/team-aldrich.png";
 import teamElliouse from "@/assets/team-elliouse.png";
