@@ -9,7 +9,6 @@ import { downloadPDF } from "@/lib/utils";
 import teamBertus from "@/assets/team-bertus.png";
 import teamNdumiso from "@/assets/team-ndumiso.png";
 import teamAldrich from "@/assets/team-aldrich.png";
-import teamAllen from "@/assets/team-allen.png";
 import teamElliouse from "@/assets/team-elliouse.png";
 
 const team = [
@@ -33,13 +32,6 @@ const team = [
     title: "Candidate Planner",
     image: teamAldrich,
     cvFile: "SACPLAN_CERTIFICATE-_CANDIDATE_PLANNER_2026_-_2027.pdf",
-  },
-  {
-    name: "Allen van Vollenstee",
-    role: "Planning Associate",
-    title: "Candidate Planner",
-    image: teamAllen,
-    cvFile: "7309145013080-SACPLAN-3.pdf",
   },
   {
     name: "Elliouse Flynn",
